@@ -1,0 +1,5 @@
+[
+    { "id": "prod-001", "name": "Conveyor Belt" },
+    { "id": "prod-002", "name": "Hydraulic Press" },
+    { "id": "prod-003", "name": "Lathe Machine" }
+]
