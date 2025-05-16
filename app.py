@@ -22,3 +22,10 @@ def submit_order():
 if __name__ == "__main__":
     init_db()
     app.run(debug=True)
+
+from flask import send_from_directory
+import os
+
+@app.route('/products')
+def get_products():
+    return send_from_directory(os.path.abspath(os.path.dirname(__file__)), 'industrial.json')
