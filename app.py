@@ -1,8 +1,9 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import uuid
-from database import init_db, insert_order
+import os
 import json
+from database import init_db, insert_order
 
 app = Flask(__name__)
 CORS(app)
@@ -19,13 +20,11 @@ def submit_order():
 
     return jsonify({"message": "Order received", "order_id": order_id}), 201
 
-if __name__ == "__main__":
-    init_db()
-    app.run(debug=True)
-
-from flask import send_from_directory
-import os
-
-@app.route('/products')
+@app.route("/products")
 def get_products():
     return send_from_directory(os.path.abspath(os.path.dirname(__file__)), 'industrial.json')
+
+if __name__ == "__main__":
+    init_db()
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
