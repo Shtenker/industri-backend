@@ -38,7 +38,7 @@ def get_orders():
     rows = cursor.fetchall()
     conn.close()
 
-    orders = [{"order_id": row[0], "product_id": row[1], "line_number": row[2]} for row in rows]
+    orders = [{"order_id": row[0], "product_id": row[1], "row_number": row[2]} for row in rows]
     return jsonify(orders)
 
 
